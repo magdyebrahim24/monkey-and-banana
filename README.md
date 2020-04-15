@@ -1,5 +1,5 @@
 # Monkey And Banana AI Game
-### an Ai Game That Solve The problem of finding the correct path from source to destination .
+### An Ai Game That Solve The problem of finding the correct path from source to destination .
 ### Use BeathFirst Algorithm.
 
 ## Explain How Game Play :
