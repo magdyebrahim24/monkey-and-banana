@@ -109,59 +109,7 @@ abstract class ITreeIterator {
 }
 ```
 
-### Tree iterators
-
-- _DepthFirstIterator_ - a specific implementation of the tree iterator which traverses the tree collection by using the depth-first algorithm. This algorithm uses the **stack** data structure to store vertices (nodes) which should be visited next using the _getNext()_ method.
-
-```
-class DepthFirstIterator implements ITreeIterator {
-  final DepthFirstTreeCollection treeCollection;
-  final Set<int> visitedNodes = <int>{};
-  final ListQueue<int> nodeStack = ListQueue<int>();
-
-  final int _initialNode = 1;
-  int _currentNode;
-
-  DepthFirstIterator(this.treeCollection) {
-    _currentNode = _initialNode;
-    nodeStack.add(_initialNode);
-  }
-
-  Map<int, Set<int>> get adjacencyList => treeCollection.graph.adjacencyList;
-
-  @override
-  bool hasNext() {
-    return nodeStack.isNotEmpty;
-  }
-
-  @override
-  int getNext() {
-    if (!hasNext()) {
-      return null;
-    }
-
-    _currentNode = nodeStack.removeLast();
-    visitedNodes.add(_currentNode);
-
-    if (adjacencyList.containsKey(_currentNode)) {
-      for (var node in adjacencyList[_currentNode]
-          .where((n) => !visitedNodes.contains(n))) {
-        nodeStack.addLast(node);
-      }
-    }
-
-    return _currentNode;
-  }
-
-  @override
-  void reset() {
-    _currentNode = _initialNode;
-    visitedNodes.clear();
-    nodeStack.clear();
-    nodeStack.add(_initialNode);
-  }
-}
-```
+### BreadthFirstIterator (Algorithm code ) :-
 
 - _BreadthFirstIterator_ - a specific implementation of the tree iterator which traverses the tree collection by using the breadth-first algorithm. This algorithm uses the **queue** data structure to store vertices (nodes) which should be visited next using the _getNext()_ method.
 
@@ -215,165 +163,58 @@ class BreadthFirstIterator implements ITreeIterator {
 }
 ```
 
-### Example
-
-_IteratorExample_ widget is responsible for building the tree (graph) using the _Graph_ class and contains a list of tree collection objects. After selecting the specific tree collection from the list and triggering the _traverseTree()_ method, an appropriate iterator of that particular tree collection is created and used to traverse the tree data structure.
-As you can see in the _traverseTree()_ method, all the implementation details of the tree collection's traversal are hidden from the client, it only uses the _hasNext()_ and _getNext()_ methods defined by the _ITreeIterator_ interface to iterate through all of the vertices (nodes) of the built _Graph_ object (tree).
+### Grraph (Ndes & Edges) defenition :
 
 ```
-class IteratorExample extends StatefulWidget {
-  @override
-  _IteratorExampleState createState() => _IteratorExampleState();
-}
-
-class _IteratorExampleState extends State<IteratorExample> {
-  final List<ITreeCollection> treeCollections = List<ITreeCollection>();
-
-  int _selectedTreeCollectionIndex = 0;
-  int _currentNodeIndex = 0;
-  bool _isTraversing = false;
-
-  @override
-  void initState() {
-    super.initState();
-
-    var graph = _buildGraph();
-    treeCollections.add(BreadthFirstTreeCollection(graph));
-    treeCollections.add(DepthFirstTreeCollection(graph));
-  }
-
   Graph _buildGraph() {
     var graph = Graph();
 
-    graph.addEdge(1, 2);
-    graph.addEdge(1, 3);
-    graph.addEdge(1, 4);
-    graph.addEdge(2, 5);
-    graph.addEdge(3, 6);
-    graph.addEdge(3, 7);
-    graph.addEdge(4, 8);
+    graph.addEdge(1, 21);
+    graph.addEdge(1, 22);
+    graph.addEdge(1, 23);
+    graph.addEdge(1, 24);
 
+    graph.addEdge(21, 31);
+    graph.addEdge(21, 25);
+    graph.addEdge(21, 20);
+    graph.addEdge(21, 14);
+    graph.addEdge(21, 13);
+    graph.addEdge(21, 7);
+    graph.addEdge(21, 11);
+    graph.addEdge(21, 28);
+
+    graph.addEdge(22, 32);
+    graph.addEdge(22, 2);
+    graph.addEdge(22, 5);
+    graph.addEdge(22, 3);
+    graph.addEdge(22, 16);
+    graph.addEdge(22, 6);
+    graph.addEdge(22, 8);
+    graph.addEdge(22, 17);
+    graph.addEdge(22, 9);
+    graph.addEdge(22, 30);
+
+    graph.addEdge(24, 34);
+    graph.addEdge(24, 26);
+    graph.addEdge(24, 4);
+    graph.addEdge(24, 17);
+    graph.addEdge(24, 8);
+    graph.addEdge(24, 6);
+    graph.addEdge(24, 10);
+    graph.addEdge(24, 29);
+
+    graph.addEdge(23, 33);
+    graph.addEdge(23, 3);
+    graph.addEdge(23, 5);
+    graph.addEdge(23, 2);
+    graph.addEdge(23, 15);
+    graph.addEdge(23, 7);
+    graph.addEdge(23, 13);
+    graph.addEdge(23, 14);
+    graph.addEdge(23, 12);
+    graph.addEdge(23, 27);
     return graph;
   }
 
-  void _setSelectedTreeCollectionIndex(int index) {
-    setState(() {
-      _selectedTreeCollectionIndex = index;
-    });
-  }
-
-  Future _traverseTree() async {
-    _toggleIsTraversing();
-
-    var iterator =
-        treeCollections[_selectedTreeCollectionIndex].createIterator();
-
-    while (iterator.hasNext()) {
-      setState(() {
-        _currentNodeIndex = iterator.getNext();
-      });
-      await Future.delayed(const Duration(seconds: 1));
-    }
-
-    _toggleIsTraversing();
-  }
-
-  void _toggleIsTraversing() {
-    setState(() {
-      _isTraversing = !_isTraversing;
-    });
-  }
-
-  void _reset() {
-    setState(() {
-      _currentNodeIndex = 0;
-    });
-  }
-
-  Color _getBackgroundColor(int index) {
-    return _currentNodeIndex == index ? Colors.red[200] : Colors.white;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return ScrollConfiguration(
-      behavior: ScrollBehavior(),
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: paddingL),
-        child: Column(
-          children: <Widget>[
-            TreeCollectionSelection(
-              treeCollections: treeCollections,
-              selectedIndex: _selectedTreeCollectionIndex,
-              onChanged:
-                  !_isTraversing ? _setSelectedTreeCollectionIndex : null,
-            ),
-            const SizedBox(height: spaceL),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                PlatformButton(
-                  child: Text('Traverse'),
-                  materialColor: Colors.black,
-                  materialTextColor: Colors.white,
-                  onPressed: _currentNodeIndex == 0 ? _traverseTree : null,
-                ),
-                PlatformButton(
-                  child: Text('Reset'),
-                  materialColor: Colors.black,
-                  materialTextColor: Colors.white,
-                  onPressed:
-                      _isTraversing || _currentNodeIndex == 0 ? null : _reset,
-                ),
-              ],
-            ),
-            const SizedBox(height: spaceL),
-            Box(
-              nodeId: 1,
-              color: _getBackgroundColor(1),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Box(
-                    nodeId: 2,
-                    color: _getBackgroundColor(2),
-                    child: Box(
-                      nodeId: 5,
-                      color: _getBackgroundColor(5),
-                    ),
-                  ),
-                  Box(
-                    nodeId: 3,
-                    color: _getBackgroundColor(3),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        Box(
-                          nodeId: 6,
-                          color: _getBackgroundColor(6),
-                        ),
-                        Box(
-                          nodeId: 7,
-                          color: _getBackgroundColor(7),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Box(
-                    nodeId: 4,
-                    color: _getBackgroundColor(4),
-                    child: Box(
-                      nodeId: 8,
-                      color: _getBackgroundColor(8),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
 ```
+
