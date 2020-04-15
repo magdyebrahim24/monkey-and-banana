@@ -23,11 +23,10 @@ _ITreeIterator_ defines a common interface for all specific iterators of the tre
 - _getNext()_ - returns the next value of the collection;
 - _reset()_ - resets the iterator and sets the current position of it to the beginning.
 
-_DepthFirstIterator_ and _BreadthFirstIterator_ are concrete implementations of the _ITreeIterator_ interface. _DepthFirstIterator_ implements the **depth-first** algorithm to traverse the tree collection. Correspondingly, _BreadthFirstIterator_ implements the **breadth-first** algorithm. The main difference between these two algorithms is the order in which all of the nodes are visited. Hence, the depth-first algorithm is implemented using the **stack** data structure while the breadth-first algorithm uses the **queue** data structure to store nodes (vertices) which should be visited next.
+#### the breadth-first algorithm uses the **queue** data structure to store nodes (vertices) which should be visited next.
 
-_IteratorExample_ references both interfaces - _ITreeCollection_ and _ITreeIterator_ - to specify the required tree collection and create an appropriate iterator for it.
 
-### Graph
+### Graph Code In Dart
 
 A class which stores the adjacency list of the graph. It is stored as a map data structure where the key represents the node's (vertix) id and the value is a list of vertices (ids of other nodes) adjacent to the vertex of that id (key). Also, this class defines the _addEdge()_ method to add an edge to the adjacency list.
 
