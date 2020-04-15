@@ -8,7 +8,7 @@
 - if it there he win otherwise he go in the next path.....
 - the goal or the location of banana is random .
 
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+![Image of Yaktocat](resourses:assets/app-screen.jpg)
 
 
 
