@@ -13,9 +13,9 @@
 ## Implementation The Project
 
 #### We Work With Flutter .
-- At First : We use graph to design the Ui and we consider the game as group of nodes and edges then by using BreathFirst Algorithm We   Search for The Random Goal (Banana) .
+- At First : We use graph to design the Ui and we consider the game as group of nodes and edges then by using BreathFirst Algorithm We   Search for The Random Goal (Banana) using Iterator in Dart .
 
-_DepthFirstTreeCollection_ and _BreadthFirstTreeCollection_ are concrete implementations of the _ITreeCollection_ interface. _DepthFirstTreeCollection_ creates the _DepthFirstIterator_ while _BreadthFirstTreeCollection_ creates the _BreadthFirstIterator_. Also, both of these collections stores the _Graph_ object to save the tree data structure itself.
+- _BreadthFirstTree creates the _BreadthFirstIterator_. Also, both of these collections stores the _Graph_ object to save the tree data structure itself.
 
 _ITreeIterator_ defines a common interface for all specific iterators of the tree collection:
 
