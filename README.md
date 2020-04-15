@@ -1,19 +1,19 @@
 # Monkey And Banana AI Game
-### an Ai Game That Solve The problem of finding the correct path from source to destination . 
+### an Ai Game That Solve The problem of finding the correct path from source to destination .
+### Use BeathFirst Algorithm.
 
-![Iterator Class Diagram](resource:assets/app-screen.jpg)
+## Explain How Game Play :
+- the monkey find two paths to banana .
+- he go in every path and check is the banana there in the end or what 
+- if it there he win otherwise he go in the next path.....
+- the goal or the location of banana is random .
 
-## Implementation
 
 
-The class diagram below shows the implementation of the **Iterator** design pattern.
+## Implementation The Project
 
-![Iterator Implementation Class Diagram](resource:assets/images/iterator/iterator_implementation.png)
-
-_ITreeCollection_ defines a common interface for all the specific tree collections:
-
-- _createIterator()_ - creates an iterator for the specific tree collection;
-- _getTitle()_ - returns the title of the tree collection which is used in the UI.
+#### We Work With Flutter .
+- At First : We use graph to design the Ui and we consider the game as group of nodes and edges then by using BreathFirst Algorithm We   Search for The Random Goal (Banana) .
 
 _DepthFirstTreeCollection_ and _BreadthFirstTreeCollection_ are concrete implementations of the _ITreeCollection_ interface. _DepthFirstTreeCollection_ creates the _DepthFirstIterator_ while _BreadthFirstTreeCollection_ creates the _BreadthFirstIterator_. Also, both of these collections stores the _Graph_ object to save the tree data structure itself.
 
