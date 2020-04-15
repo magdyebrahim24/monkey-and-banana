@@ -5,7 +5,7 @@
 ## Explain How Game Play :
 - the monkey find four paths to banana .
 - he go in every path and check is the banana there in the end or what 
-- if it there he win otherwise he go in the next path.....
+- if it there he win otherwise he go in the next path .....
 - the goal or the location of banana is random .
 
 ![Image of Yaktocat](/assets/app-screen.jpg)
