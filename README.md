@@ -36,7 +36,8 @@ _ITreeIterator_ defines a common interface for all specific iterators of the tre
 - _reset()_ - resets the iterator and sets the current position of it to the beginning.
 ------------------------------------------------------------------------------------------------------------
 
-#### the breadth-first algorithm uses the **queue** data structure to store nodes (vertices) which should be visited next.
+#### the breadth-first algorithm uses the **Queue** data structure
+#### to store nodes (vertices) which should be visited next .
 
 --------------------------------------------------------------------------------------------------------------
 
@@ -58,16 +59,7 @@ class Graph {
 }
 ```
 
-### ITreeCollection
 
-An interface which defines methods to be implemented by all specific tree collection classes. Dart language does not support the interface as a class type, so we define an interface by creating an abstract class and providing a method header (name, return type, parameters) without the default implementation.
-
-```
-abstract class ITreeCollection {
-  ITreeIterator createIterator();
-  String getTitle();
-}
-```
 
 ### Tree collections
 
@@ -91,19 +83,8 @@ class BreadthFirstTreeCollection implements ITreeCollection {
 }
 ```
 
-### ITreeIterator
 
-An interface which defines methods to be implemented by all specific iterators of the tree collection.
-
-```
-abstract class ITreeIterator {
-  bool hasNext();
-  int getNext();
-  void reset();
-}
-```
-
-### BreadthFirstIterator (Algorithm code ) :-
+### BreadthFirst Algorithm code :-
 
 - _BreadthFirstIterator_ - a specific implementation of the tree iterator which traverses the tree collection by using the breadth-first algorithm. This algorithm uses the **queue** data structure to store vertices (nodes) which should be visited next using the _getNext()_ method.
 
@@ -176,37 +157,10 @@ class BreadthFirstIterator implements ITreeIterator {
     graph.addEdge(21, 7);
     graph.addEdge(21, 11);
     graph.addEdge(21, 28);
-
-    graph.addEdge(22, 32);
-    graph.addEdge(22, 2);
-    graph.addEdge(22, 5);
-    graph.addEdge(22, 3);
-    graph.addEdge(22, 16);
-    graph.addEdge(22, 6);
-    graph.addEdge(22, 8);
-    graph.addEdge(22, 17);
-    graph.addEdge(22, 9);
-    graph.addEdge(22, 30);
-
-    graph.addEdge(24, 34);
-    graph.addEdge(24, 26);
-    graph.addEdge(24, 4);
-    graph.addEdge(24, 17);
-    graph.addEdge(24, 8);
-    graph.addEdge(24, 6);
-    graph.addEdge(24, 10);
-    graph.addEdge(24, 29);
-
-    graph.addEdge(23, 33);
-    graph.addEdge(23, 3);
-    graph.addEdge(23, 5);
-    graph.addEdge(23, 2);
-    graph.addEdge(23, 15);
-    graph.addEdge(23, 7);
-    graph.addEdge(23, 13);
-    graph.addEdge(23, 14);
-    graph.addEdge(23, 12);
-    graph.addEdge(23, 27);
+    ....
+    ....
+    ....
+    ....
     return graph;
   }
 
