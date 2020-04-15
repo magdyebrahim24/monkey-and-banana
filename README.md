@@ -59,26 +59,6 @@ abstract class ITreeCollection {
 
 ### Tree collections
 
-- _DepthFirstTreeCollection_ - a tree collection class which stores the graph object and implements the _createIterator()_ method to create an iterator which uses the depth-first algorithm to traverse the graph.
-
-```
-class DepthFirstTreeCollection implements ITreeCollection {
-  final Graph graph;
-
-  const DepthFirstTreeCollection(this.graph);
-
-  @override
-  ITreeIterator createIterator() {
-    return DepthFirstIterator(this);
-  }
-
-  @override
-  String getTitle() {
-    return 'Depth-first';
-  }
-}
-```
-
 - _BreadthFirstTreeCollection_ - a tree collection class which stores the graph object and implements the _createIterator()_ method to create an iterator which uses the breadth-first algorithm to traverse the graph.
 
 ```
