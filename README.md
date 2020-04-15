@@ -3,8 +3,10 @@
 - ### Use BeathFirst Algorithm.
 
 -----------------------------------------------------------------------------
+
 ### Game Apk Link To Download and Install
 https://drive.google.com/open?id=11Jvw1QGQ1NH6o0_hJCBPfozpn10eRr1e
+
 -----------------------------------------------------------------------------
 
 ## Explain How Game Play :
@@ -15,7 +17,7 @@ https://drive.google.com/open?id=11Jvw1QGQ1NH6o0_hJCBPfozpn10eRr1e
 
 ![Image of Yaktocat](/assets/app-gif-screen.gif)
 
-
+-------------------------------------------------------------------------------
 
 ## Implementation The Project
 
@@ -29,9 +31,11 @@ _ITreeIterator_ defines a common interface for all specific iterators of the tre
 - _hasNext()_ - returns true if the iterator did not reach the end of the collection yet, otherwise false;
 - _getNext()_ - returns the next value of the collection;
 - _reset()_ - resets the iterator and sets the current position of it to the beginning.
+------------------------------------------------------------------------------------------------------------
 
 #### the breadth-first algorithm uses the **queue** data structure to store nodes (vertices) which should be visited next.
 
+--------------------------------------------------------------------------------------------------------------
 
 ### Graph Code In Dart
 
